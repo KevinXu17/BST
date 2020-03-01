@@ -134,4 +134,14 @@ class BinarySearchTree {
       sizeRec(node.right, updateLeftSize)
     }
   }
+
+  def findMax(): Int = {
+    var max: Node = root
+    if (max != null) {
+      while (max.right != null) {
+        max = max.right
+      }
+      max.key
+    } else -1
+  }
 }

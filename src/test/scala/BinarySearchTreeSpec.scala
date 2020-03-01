@@ -174,4 +174,18 @@ class BinarySearchTreeSpec extends FunSpec with BeforeAndAfter with Matchers {
       //nullTree.printTree()
     }
   }
+
+  describe("findMax") {
+    it("should return -1 if root is null") {
+      nullTree.findMax() shouldEqual -1
+    }
+    it("should return correct max key value if root is not null") {
+      noChildTree.findMax() shouldEqual 100
+      oneLeftTree.findMax() shouldEqual 100
+      oneRightTree.findMax() shouldEqual 150
+      onlyLeftTree.findMax() shouldEqual 100
+      onlyRightTree.findMax() shouldEqual 250
+      largeTree.findMax() shouldEqual 250
+    }
+  }
 }
