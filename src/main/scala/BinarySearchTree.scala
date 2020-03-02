@@ -144,4 +144,14 @@ class BinarySearchTree {
       max.key
     } else -1
   }
+
+  def findMin(): Int = {
+    var min: Node = root
+    if (min != null) {
+      while (min.left != null) {
+        min = min.left
+      }
+      min.key
+    } else -1
+  }
 }
