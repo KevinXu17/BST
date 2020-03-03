@@ -203,4 +203,42 @@ class BinarySearchTreeSpec extends FunSpec with BeforeAndAfter with Matchers {
       largeTree.findMin() shouldEqual 15
     }
   }
+
+  describe("maxHeight") {
+    it("should return 0 if root is null") {
+      nullTree.maxHeight(nullTree.root) shouldEqual 0
+    }
+
+    it("should return correct height of tree") {
+      noChildTree.maxHeight(noChildTree.root) shouldEqual 1
+      twoChildTree.maxHeight(twoChildTree.root) shouldEqual 2
+      oneLeftTree.maxHeight(oneLeftTree.root) shouldEqual 2
+      oneRightTree.maxHeight(oneRightTree.root) shouldEqual 2
+      onlyLeftTree.maxHeight(onlyLeftTree.root) shouldEqual 4
+      onlyRightTree.maxHeight(onlyRightTree.root) shouldEqual 4
+      largeTree.maxHeight(largeTree.root) shouldEqual 4
+    }
+  }
+
+  describe("diffOfHeight") {
+    it("should return 0 if root is null") {
+      nullTree.diffOfHeight(nullTree.root) shouldEqual 0
+    }
+
+    it("should return 0 if tree is balanced") {
+      noChildTree.diffOfHeight(noChildTree.root) shouldEqual 0
+      twoChildTree.diffOfHeight(twoChildTree.root) shouldEqual 0
+      largeTree.diffOfHeight(largeTree.root) shouldEqual 0
+      oneLeftTree.diffOfHeight(oneLeftTree.root) shouldEqual 0
+      oneRightTree.diffOfHeight(oneRightTree.root) shouldEqual 0
+    }
+
+    it("should return -1 if left tree is heavier") {
+      onlyLeftTree.diffOfHeight(onlyLeftTree.root) shouldEqual -1
+    }
+
+    it("should return 1 if right tree is heavier") {
+      onlyRightTree.diffOfHeight(onlyRightTree.root) shouldEqual 1
+    }
+  }
 }
