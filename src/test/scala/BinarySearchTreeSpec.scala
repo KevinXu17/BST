@@ -1,4 +1,5 @@
 import org.scalatest.{BeforeAndAfter, FunSpec, Matchers}
+import BalanceType._
 
 class BinarySearchTreeSpec extends FunSpec with BeforeAndAfter with Matchers {
 
@@ -222,23 +223,23 @@ class BinarySearchTreeSpec extends FunSpec with BeforeAndAfter with Matchers {
 
   describe("diffOfHeight") {
     it("should return 0 if root is null") {
-      nullTree.diffOfHeight(nullTree.root) shouldEqual 0
+      nullTree.checkBalance(nullTree.root) shouldEqual Balance
     }
 
     it("should return 0 if tree is balanced") {
-      noChildTree.diffOfHeight(noChildTree.root) shouldEqual 0
-      twoChildTree.diffOfHeight(twoChildTree.root) shouldEqual 0
-      largeTree.diffOfHeight(largeTree.root) shouldEqual 0
-      oneLeftTree.diffOfHeight(oneLeftTree.root) shouldEqual 0
-      oneRightTree.diffOfHeight(oneRightTree.root) shouldEqual 0
+      noChildTree.checkBalance(noChildTree.root) shouldEqual Balance
+      twoChildTree.checkBalance(twoChildTree.root) shouldEqual Balance
+      largeTree.checkBalance(largeTree.root) shouldEqual Balance
+      oneLeftTree.checkBalance(oneLeftTree.root) shouldEqual Balance
+      oneRightTree.checkBalance(oneRightTree.root) shouldEqual Balance
     }
 
     it("should return -1 if left tree is heavier") {
-      onlyLeftTree.diffOfHeight(onlyLeftTree.root) shouldEqual -1
+      onlyLeftTree.checkBalance(onlyLeftTree.root) shouldEqual LeftHeavy
     }
 
     it("should return 1 if right tree is heavier") {
-      onlyRightTree.diffOfHeight(onlyRightTree.root) shouldEqual 1
+      onlyRightTree.checkBalance(onlyRightTree.root) shouldEqual RightHeavy
     }
   }
 }

@@ -1,3 +1,5 @@
+import BalanceType._
+
 import scala.collection.mutable.ArrayBuffer
 
 class Node (val key: Int) {
@@ -159,10 +161,10 @@ class BinarySearchTree {
    * decide whether the tree is balanced
    * -1: left is heavy; 0: balanced; 1: right is heavy
    */
-  def diffOfHeight(root: Node): Int = {
-    if (root == null) 0 else {
+  def checkBalance(root: Node): BalanceType = {
+    if (root == null) Balance else {
       val diff = maxHeight(root.left, 0) - maxHeight(root.right, 0)
-      if (diff > 2) -1 else if (diff < -2) 1 else 0
+      if (diff >= 2) LeftHeavy else if (diff <= -2) RightHeavy else Balance
     }
   }
 
